@@ -1,10 +1,11 @@
 async function handleRequest(request) {
+	const headers = {
+		'Access-Control-Allow-Origin': '*',
+		'Access-Control-Allow-Methods': 'GET',
+		'Access-Control-Allow-Headers': 'Content-Type'
+	};
+
 	try {
-		const headers = {
-			'Access-Control-Allow-Origin': '*',
-			'Access-Control-Allow-Methods': 'GET',
-			'Access-Control-Allow-Headers': 'Content-Type'
-		};
 
 		const url = new URL(request.url);
 		var formatParameter = null;
@@ -21,10 +22,8 @@ async function handleRequest(request) {
 		}
 		const acceptHeader = request.headers.get('Accept');
 
-		const quotes = JSON.parse(
-			await (await fetch('https://raw.githubusercontent.com/ajzbc/kanye.rest/quotes/quotes.json')).text()
-		);
 
+		let quotes = require('./quotes.json');
 		const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
 		if (formatParameter !== 'text' && acceptHeader !== 'text/plain') {
@@ -43,6 +42,7 @@ async function handleRequest(request) {
 			});
 		}
 	} catch (error) {
+		console.log(error);
 		return new Response('An unexpected error ocurred', {
 			status: 500,
 			headers: {
