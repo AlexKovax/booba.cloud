@@ -1,6 +1,6 @@
 
-  <h1>🌊 kanye.rest</h1>
-  <b>A free REST API for random Kanye West quotes (Kanye as a Service)</b>
+  <h1>👊 booba.cloud</h1>
+  <b>Basée sur Kanye.rest : a free REST API for random Kanye West quotes (Kanye as a Service)</b>
 
  <br />
 
